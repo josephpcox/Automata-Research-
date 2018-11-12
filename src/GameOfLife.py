@@ -2,7 +2,7 @@
 import pygame
 import numpy as np
 from time import sleep
-N = 150
+N = 250
 def updateGrid(grid,N):
     newGrid =grid.copy()
     for i in range(N): 
@@ -85,6 +85,7 @@ while not done:
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
     grid = updateGrid(grid,N)
+    print(grid)
 # Be IDLE friendly. If you forget this line, the program will 'hang'
 # on exit.
 pygame.quit()
