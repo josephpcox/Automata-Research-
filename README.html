@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="cellular-automata-readme-file">Cellular Automata ReadMe file</h1>
+<h2 id="joseph-cox-bishop-clark-kelvin-s-p-dong-mauzor-ilonzo">Joseph Cox, Bishop Clark, Kelvin S. P. Dong, Mauzor Ilonzo</h2>
+<hr>
+<h2 id="files">FILES</h2>
+<ul>
+<li>A Brief History and Symposium On Cellular Automata (OUR RESEARCH PAPER)</li>
+<li>ECA.py our python code for Elementry ECA written by Bishop Clark our team member</li>
+<li>flock_js.pde processing code for deminstration of a boid system written by D.Shiffman cited at [4] [8] [20]</li>
+<li>GameOfLife.py our python code for deminstrating Conways's game of life</li>
+<li>README.html provides a webpage to view the README</li>
+<li>README.pdf proveds a PDF for the the README</li>
+<li>GROUP PROJECT PRESENNTATION CELLULAR AUTOMATA (OUR SLIDE SHOW)</li>
+<li>requirements.txt a file that holds all necessary python libraries</li>
+<li>RESEARCHPAPERTEXSRC.zip this is a zip file that holds all of the LaTex code</li>
+</ul>
+<hr>
+<h2 id="a-brief-history-and-symposium-on-cellular-automata">A Brief History and Symposium On Cellular Automata</h2>
+<ol>
+<li>This is our reseach paper it is 9 pages long and has 20 citations</li>
+<li>This paper is comprised of 6 sections including the abstract:</li>
+</ol>
+<ul>
+<li>ABSTRACT</li>
+<li>I. INTRODUCTION TO C.A</li>
+<li>II. VONNUEMANN’S C.A.AND CONWAY’SGAME OFLIFE</li>
+<li>III.  ELEMENTARY CELLULAR AUTOMATA</li>
+<li>IV.  CELLULAR AUTOMATA APPROACH INFLOCKING</li>
+<li>V.  QUANTUM CELLULAR AUTOMATION</li>
+</ul>
+<hr>
+<h2 id="cellular-automata-code-requirments">Cellular Automata Code Requirments</h2>
+<ol>
+<li>To Run ECA.py and GameOfLife.py Python 3 must be installed along with pip to install the necessary libraries.</li>
+<li>To Run the flock_js.pde you must have processing installed either as a js library or as an IDE, we recommend the IDE</li>
+<li>This code is our own code developed by our research on the subject area, we had help from our citations.</li>
+<li>Use pip install -r requirements.txt this will recursively install all of the necessary Python Libraries to Run both code sets</li>
+</ol>
+<hr>
+<h2 id="running-gameoflifepy">Running GameOFLife.py</h2>
+<ol>
+<li>From the command line call: python GameOfLife.py</li>
+<li>This code is our own code developed by our research on the subject area, we had help from our citations.</li>
+<li>For the game of life on lines 9 and 10 can cause the frame to be adjusted, we recommend WIDTH and HEIGHT to be either 30 or 7 for a zoom in or zoom out view</li>
+</ol>
+<hr>
+<h2 id="running-ecapy">Running ECA.py</h2>
+<ol>
+<li>From the command line call: python ECA.py</li>
+<li>The list binary number included in the variable 'ruleset' can include any 8 bit binary number separated into 8 elements.</li>
+<li>The amount of generations can be modified in the 'requested_generations' variable.</li>
+<li>For the width (amount of random states), the range can be modified in the first 'for' loop</li>
+</ol>
+<hr>
+<h2 id="running-flockjspde-4820">Running flock_js.pde [4][8][20]</h2>
+<ol>
+<li>We cited this code above and in our work: were are not the creaters of it but it was used for Boid deminstration, to run this code install the Processing IDE at: https://processing.org/download/</li>
+<li>Once the IDE is installed open the file using the GUI, locate the flock_js file and open it inside the IDE.</li>
+<li>Hit the play button and enjoy</li>
+</ol>
+<hr>
+<h2 id="condenced-citationscitations-are-neat-in-both-the-slides-and-in-the-reseach-paper">Condenced Citations(Citations Are neat in both the Slides and in the Reseach Paper):</h2>
+<p>[1] A. W. Burks, Von Neumann’s Self-Reproducing Automata, Office of
+Research Administration, Ann Arbor, MI, tech., 1969.<br/>
+[2] S. Wolfram, A New Kind of Science. Wolfram Media, 2002.<br/>
+[3] S. Wolfram, Cellular Automata as Simple Self-Organizing Systems.<br/>
+[4] D. Shiffman, The Nature of Code. 2012.<br/>
+[5] E. W. Weisstein, Elementary Cellular Automaton,
+Wolfram MathWorld.[Online].Available:
+http://mathworld.wolfram.com/ElementaryCellularAutomaton.html.<br/>
+[6] K. E. Stiefel, Fractals in Frozen, Science On, 29-Dec-2016. [Online].
+Available: https://scienceonblog.wordpress.com/2017/01/19/fractalsin-frozen/.<br/>
+[7] J. Shannon, Exploring the real world applications of cellular automata
+and its application to the simulation of flocking behaviour, Aug. 2013.<br/>
+[8] D. Shiffman, Flocking. [Online]. Available:
+https://processing.org/examples/flocking.html.<br/>
+[9] C. Reynolds, Boids: Background and Update, Steering
+Behaviors For Autonomous Characters. [Online]. Available:
+https://www.red3d.com/cwr/boids/.<br/>
+[10] R. Feynman. Simulating physics with computers. International Journal
+of Theoretical Physics, 21:467488, June 1982.<br/>
+[11] D. Deutsch, Quantum Theory, the Church-Turing Principle and the
+Universal Quantum Computer, Proc. R. Soc. Lond., Vol. A400 (1985)
+97-117<br/>
+[12] G. Grossing and A. Zeilinger. Quantum cellular automata. Complex
+Syst., 2:197208, 1988.<br/>
+[13] J. Watrous. On one-dimensional quantum cellular automata. In Proceedings
+of the 36th Annual Symposium on Foundations of Computer
+Science, pages 528537, October 1995.<br/>
+[14] K. Wiesner, Quantum Cellular Automata, Aug. 2008.<br/>
+[15] D. A. Antonelli, D. Z. Chen, T. J. Dysart, X. S. Hu, A. B. Kahng,
+P. M. Kogge, R. C. Murphy, and M. T. Niemier, Quantum-Dot
+Cellular Automata (QCA) Circuit Partitioning: Problem Modeling and
+Solutions.<br/>
+[16] International Technology Roadmap for Semiconductors (ITRS), 2015
+Edition<br/>
+[17] C.G. Smith. Computation without current. Science, 284:274, 1999.<br/>
+[18] P.D. Tougaw and C.S. Lent. Logical devices implemented using
+quantum cellular automata. Journal of Applied Physics, 75:1818, 1994.<br/>
+[19] U. Mehta and V. Dhare, Quantum-dot Cellular Automata (QCA): A
+Survey.<br/>
+[20] D. Shiffman, ”The Coding Train” [Online]. Available:
+https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1aw<br/></p>
+
+</body>
+</html>

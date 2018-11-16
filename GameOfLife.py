@@ -1,51 +1,60 @@
-"""
- Example program to show using an array to back a grid on-screen.
- 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
- 
- Explanation video: http://youtu.be/mdTeqiWyFnc
-"""
+
 import pygame
+import numpy as np
+from time import sleep
+
+# This sets the number of cells 
+N = 150
+# This sets the WIDTH and HEIGHT of each grid location
+WIDTH = 30
+HEIGHT = 30
+#WIDTH = 7
+#HEIGHT = 7
+# This sets the margin between each cell
+MARGIN = 4
+ 
+
+def updateGrid(grid,N):
+    newGrid =grid.copy()
+    for i in range(N): 
+        for j in range(N): 
+  
+            # compute 8-neghbor sum 
+            # using boundary conditions - x and y wrap around  
+            total =  (grid[i][(j-1)%N]+ grid[i][(j+1)%N] + 
+                         grid[(i-1)%N] [j] + grid[(i+1)%N][j] + 
+                         grid[(i-1)%N] [(j-1)%N] + grid[(i-1)%N] [(j+1)%N] + 
+                         grid[(i+1)%N] [(j-1)%N]+ grid[(i+1)%N][(j+1)%N])
+  
+            # apply Conway's rules 
+            if grid[i] [j]  == 1: 
+                if (total < 2) or (total > 3): 
+                    newGrid[i] [j] = 0 
+            else: 
+                if total == 3: 
+                    newGrid[i] [j] = 1
+
+    return newGrid 
  
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
-
- 
-# This sets the WIDTH and HEIGHT of each grid location
-WIDTH = 20
-HEIGHT = 20
- 
-# This sets the margin between each cell
-MARGIN = 5
+RED = (255, 0, 0)
  
 # Create a 2 dimensional array. A two dimensional
 # array is simply a list of lists.
-grid = []
-for row in range(10):
-    # Add an empty array that will hold each cell
-    # in this row
-    grid.append([])
-    for column in range(10):
-        grid[row].append(0)  # Append a cell
- 
-# Set row 1, cell 5 to one. (Remember rows and
-# column numbers start at zero.)
-grid[1][5] = 1
+grid = np.random.randint(2, size=(N, N))
  
 # Initialize pygame
 pygame.init()
  
 # Set the HEIGHT and WIDTH of the screen
-WINDOW_SIZE = [255, 255]
+WINDOW_SIZE = [N*6, N*6]
 screen = pygame.display.set_mode(WINDOW_SIZE)
  
 # Set title of screen
-pygame.display.set_caption("Array Backed Grid")
+pygame.display.set_caption("The Game of Life")
  
 # Loop until the user clicks the close button.
 done = False
@@ -58,25 +67,15 @@ while not done:
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            # User clicks the mouse. Get the position
-            pos = pygame.mouse.get_pos()
-            # Change the x/y screen coordinates to grid coordinates
-            column = pos[0] // (WIDTH + MARGIN)
-            row = pos[1] // (HEIGHT + MARGIN)
-            # Set that location to one
-            grid[row][column] = 1
-            print("Click ", pos, "Grid coordinates: ", row, column)
- 
     # Set the screen background
     screen.fill(BLACK)
  
     # Draw the grid
-    for row in range(10):
-        for column in range(10):
+    for row in range(N):
+        for column in range(N):
             color = WHITE
             if grid[row][column] == 1:
-                color = GREEN
+                color = BLACK
             pygame.draw.rect(screen,
                              color,
                              [(MARGIN + WIDTH) * column + MARGIN,
@@ -85,11 +84,12 @@ while not done:
                               HEIGHT])
  
     # Limit to 60 frames per second
-    clock.tick(60)
+    clock.tick(30)
  
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
- 
+    grid = updateGrid(grid,N)
+    print(grid)
 # Be IDLE friendly. If you forget this line, the program will 'hang'
 # on exit.
 pygame.quit()
